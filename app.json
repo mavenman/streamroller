@@ -1,0 +1,6 @@
+{
+  "name": "Streamroller",
+  "description": "Self hosted simulcasting made easy",
+  "repository": "https://github.com/dustinblackman/streamroller",
+  "keywords": ["go", "youtube", "facebook", "twitch"]
+}

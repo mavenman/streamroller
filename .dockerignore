@@ -1,0 +1,9 @@
+.git/
+dist/
+tmp/
+vendor/*/
+!vendor/vendor.json
+
+bindata.go
+streamroller
+streamroller.json
