@@ -14,6 +14,10 @@ import (
 	"github.com/spf13/viper"
 )
 
+var (
+	version = "HEAD"
+)
+
 // Server holds variables for working with the HTTP and RTMP server
 type Server struct {
 	HTTPPort string
@@ -143,6 +147,10 @@ func main() {
 		Example: `  streamroller -t TWITCH-KEY -f FACEBOOK-KEY`,
 		Run:     run,
 		Short:   "A multi streaming tool for with read only merged chats for platforms like Twitch and Facebook",
+		Long: `A multi streaming tool for with read only merged chats for platforms like Twitch and Facebook
+
+Version: ` + version + `
+Home: https://github.com/dustinblackman/streamroller`,
 	}
 
 	flags := rootCmd.PersistentFlags()

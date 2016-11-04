@@ -11,7 +11,7 @@ bindata: setup-bindata
 
 # Creates binary
 build: bindata
-	go build -o streamroller *.go
+	go build -ldflags="-X main.version=$(VERSION)" -o streamroller *.go
 
 build-linux: bindata
 	gox -os="linux" -arch="amd64" -output="streamroller"
@@ -30,7 +30,7 @@ deps:
 dist: bindata
 	which gox && echo "" || go get github.com/mitchellh/gox
 	rm -rf tmp dist
-	gox -os="linux windows freebsd" -osarch="darwin/amd64" -output='tmp/{{.OS}}-{{.Arch}}-$(VERSION)/{{.Dir}}' -ldflags="-X github.com/dustinblackman/streamroller/cmd.version=$(VERSION)"
+	gox -os="linux windows freebsd" -osarch="darwin/amd64" -output='tmp/{{.OS}}-{{.Arch}}-$(VERSION)/{{.Dir}}' -ldflags="-X main.version=$(VERSION)"
 	mkdir dist
 
 	# Build for Windows
@@ -54,7 +54,7 @@ easyjson:
 
 # Builds and installs binary. Mainly used from people wanting to install from source.
 install: deps bindata
-	go install *.go
+	go install -ldflags="-X main.version=$(VERSION)" *.go
 
 # Setups go-bindata
 setup-bindata:
