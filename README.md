@@ -15,7 +15,6 @@ __Chat:__
 ![Chat](http://i.imgur.com/kpnMCyM.png)
 
 ## Features
- 
 - [x] Combined chat (read)
 - [ ] Combined chat (write)
 - [x] RTMP cloning

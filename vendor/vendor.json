@@ -195,6 +195,24 @@
 			"revisionTime": "2016-09-08T09:36:58Z"
 		},
 		{
+			"checksumSHA1": "urY45++NYCue4nh4k8OjUFnIGfU=",
+			"path": "github.com/mailru/easyjson/buffer",
+			"revision": "159cdb893c982e3d1bc6450322fedd514f9c9de3",
+			"revisionTime": "2016-11-03T14:18:12Z"
+		},
+		{
+			"checksumSHA1": "nkU9oLa1/Uft9r3A5dRHF0xQRog=",
+			"path": "github.com/mailru/easyjson/jlexer",
+			"revision": "159cdb893c982e3d1bc6450322fedd514f9c9de3",
+			"revisionTime": "2016-11-03T14:18:12Z"
+		},
+		{
+			"checksumSHA1": "Bn9G5eAKAISNmfGdVJPsyXIjUHw=",
+			"path": "github.com/mailru/easyjson/jwriter",
+			"revision": "159cdb893c982e3d1bc6450322fedd514f9c9de3",
+			"revisionTime": "2016-11-03T14:18:12Z"
+		},
+		{
 			"checksumSHA1": "ugnSryGF6VPBb5s87QgoRH6730g=",
 			"path": "github.com/mattn/go-colorable",
 			"revision": "6c903ff4aa50920ca86087a280590b36b3152b9c",
