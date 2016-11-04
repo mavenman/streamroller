@@ -3,7 +3,7 @@ _Self hosted simulcasting made easy_
 
 <a href="https://travis-ci.org/dustinblackman/streamroller"><img src="https://img.shields.io/travis/dustinblackman/streamroller.svg" alt="Build Status"></a> <a href="https://goreportcard.com/report/github.com/dustinblackman/streamroller"><img src="https://goreportcard.com/badge/github.com/dustinblackman/streamroller"></a> <img src="https://img.shields.io/github/release/dustinblackman/streamroller.svg?maxAge=2592000">
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller&env[GOVERSION]=go1.7&env[SR_JSON]=true&env[SR_FACEBOOK_LIVEKEY]=&env[SR_FACEBOOK_TOKEN]=&env[SR_TWITCH_LIVEKEY]=&env[SR_TWITCH_USERNAME]=&env[SR_TWITCH_OAUTH]=&) [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller&env[GOVERSION]=go1.7&env[SR_JSON]=true&env[SR_FACEBOOK_LIVEKEY]=&env[SR_FACEBOOK_TOKEN]=&env[SR_TWITCH_LIVEKEY]=&env[SR_TWITCH_USERNAME]=&env[SR_TWITCH_OAUTH]=&) [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/dustinblackman/streamroller)
 
 Streamroller is a mutlistream tool that allows you to broadcast your streams (e.g OBS/Xsplit) to multiple platforms such as Twitch and Facebook. It also has read only chat to make it easy to vocally respond to your viewers in a single window.
 
