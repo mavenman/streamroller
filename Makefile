@@ -62,6 +62,7 @@ setup-bindata:
 		go get -u -v github.com/jteeuwen/go-bindata; \
 		cd $$GOPATH/src/github.com/jteeuwen/go-bindata;\
 		git checkout tags/$(BINDATA_TAG);\
+		cd go-bindata;\
 		go install;\
 	fi
 
