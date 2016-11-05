@@ -27,6 +27,12 @@
 			"revisionTime": "2016-08-31T18:35:34Z"
 		},
 		{
+			"checksumSHA1": "aOIvPywISCz8m3AHyKahU96EuDI=",
+			"path": "github.com/dustinblackman/joy4/format/rtmp",
+			"revision": "40b45c95aa26507b9f91e2b3786fa3b11c0f013f",
+			"revisionTime": "2016-11-05T15:29:50Z"
+		},
+		{
 			"checksumSHA1": "hveFTNQ9YEyYRs6SWuXM+XU9qRI=",
 			"path": "github.com/fsnotify/fsnotify",
 			"revision": "fd9ec7deca8bf46ecd2a795baaacf2b3a9be1197",

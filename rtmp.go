@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
+	"github.com/dustinblackman/joy4/format/rtmp"
 	"github.com/nareix/joy4/av"
-	"github.com/nareix/joy4/format/rtmp"
 	"github.com/spf13/viper"
 )
 
