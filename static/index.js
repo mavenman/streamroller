@@ -8,7 +8,9 @@ function generateEntry(id, source, user, message, time) {
   </li>';
 }
 
-const ws = new WebSocket('ws://' + window.location.host + '/socket');
+var protocol = 'ws';
+if (window.location.protocol === 'https:') protocol = 'wss';
+var ws = new WebSocket(protocol + '://' + window.location.host + '/socket');
 ws.onopen = function() {
   $("#connection").attr('class', 'connected');
   $("#connection").text('Connected');

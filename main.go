@@ -120,7 +120,7 @@ func run(rootCmd *cobra.Command, args []string) {
 	web.CreateEcho(server.HTTPPort)
 	CreateRTMP(server.RTMPPort)
 
-	addr, err := net.ResolveTCPAddr("tcp", ":8080")
+	addr, err := net.ResolveTCPAddr("tcp", ":"+viper.GetString("port"))
 	if err != nil {
 		panic(err)
 	}
@@ -129,7 +129,7 @@ func run(rootCmd *cobra.Command, args []string) {
 		panic(err)
 	}
 
-	log.Info("Starting to listen for connections")
+	log.Info("Starting to listen for connections on port " + viper.GetString("port"))
 	for {
 		conn, err := listener.AcceptTCP()
 		if err != nil {
