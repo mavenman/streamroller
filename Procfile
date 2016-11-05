@@ -1,1 +1,1 @@
-web: make bindata && go run *.go
+web: go run *.go
