@@ -6,7 +6,7 @@
   "env": {
     "JSON": {
       "description": "Enables logs in JSON format",
-      "value": true
+      "value": "true"
     },
     "SR_TWITCH_LIVEKY": {
       "description": "Twitch live key",
