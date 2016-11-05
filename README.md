@@ -68,7 +68,7 @@ Heroku allows you to create a free instance of streamroller that runs in the Clo
 
 1. Create an account on [Heroku.com](http://heroku.com)
 2. Hit the deploy to Heroku button and fill in the fields, make sure to remember your app name.
-3. Done, you can find your app at `http://YOURAPPNAME.herokuapp.com`, and will able to stream endpoint in OBS/XSplit to `rtmp://YOURAPPNAME.herokuapp.com`.
+3. Done, you can find your app at `http://YOURAPPNAME.herokuapp.com`, and will able to set you stream endpoint in OBS/XSplit to `rtmp://YOURAPPNAME.herokuapp.com`.
 
 To update your keys, head over to https://dashboard.heroku.com/apps/YOURAPPNAME/settings, and click "Reveal Config Vars". Streamroller will automaticially reboot and apply the new keys.
 
