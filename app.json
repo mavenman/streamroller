@@ -2,5 +2,40 @@
   "name": "Streamroller",
   "description": "Self hosted simulcasting made easy",
   "repository": "https://github.com/dustinblackman/streamroller",
-  "keywords": ["go", "youtube", "facebook", "twitch"]
+  "keywords": ["go", "youtube", "facebook", "twitch"],
+  "env": {
+    "JSON": {
+      "description": "Enables logs in JSON format",
+      "value": true
+    },
+    "SR_TWITCH_LIVEKY": {
+      "description": "Twitch live key",
+      "value": "",
+      "required": false
+    },
+    "SR_TWITCH_USERNAME": {
+      "description": "Twitch username",
+      "value": "",
+      "required": false
+    },
+    "SR_TWITCH_OAUTH": {
+      "description": "Twitch oauth token",
+      "value": "",
+      "required": false
+    },
+    "SR_FACEBOOK_LIVEKEY": {
+      "description": "Facebook live key",
+      "value": "",
+      "required": false
+    },
+    "SR_FACEBOOK_TOKEN": {
+      "description": "Facebook token",
+      "value": "",
+      "required": false
+    }
+  },
+  "addons": [
+    "logentries",
+    "librato"
+  ]
 }
