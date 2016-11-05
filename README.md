@@ -1,7 +1,7 @@
 # Streamroller
 _Self hosted simulcasting made easy_
 
-<a href="https://travis-ci.org/dustinblackman/streamroller"><img src="https://img.shields.io/travis/dustinblackman/streamroller.svg" alt="Build Status"></a> <a href="https://goreportcard.com/report/github.com/dustinblackman/streamroller"><img src="https://goreportcard.com/badge/github.com/dustinblackman/streamroller"></a> <img src="https://img.shields.io/github/release/dustinblackman/streamroller.svg?maxAge=2592000">
+<a href="https://travis-ci.org/dustinblackman/streamroller"><img src="https://img.shields.io/travis/dustinblackman/streamroller.svg" alt="Build Status"></a> <a href="https://goreportcard.com/report/github.com/dustinblackman/streamroller"><img src="https://goreportcard.com/badge/github.com/dustinblackman/streamroller"></a> <img src="https://img.shields.io/github/release/dustinblackman/streamroller.svg">
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller) [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/dustinblackman/streamroller)
 
@@ -14,7 +14,7 @@ This tool is meant to be hosted remotely to avoid networking issues locally as t
 __Chat:__
 ![Chat](http://i.imgur.com/kpnMCyM.png)
 
-## Features
+## Features/Roadmap
 - [x] Combined chat (read)
 - [ ] Combined chat (write)
 - [x] RTMP cloning
@@ -28,7 +28,7 @@ __Chat:__
 
 ## Getting Keys/Tokens
 
-Before installing to make the setup simpler, it's best to get all the keys and tokens you'll need from your accounts first.
+Before installing to make the setup simpler, it's best to get all the keys and tokens you'll need from your accounts first. Not every platform is required, only keys and tokens for the platforms you wish to stream to.
 
 ### Twitch
 
@@ -55,18 +55,32 @@ __OAuth Token:__
 
 __Live/Stream Key:__
 
-A live/stream key for Facebook unfortunately changes every time you create a new Live video. You'll have to reintegrate and update this key each time you stream. You can follow this guide to get your started with streaming to Facebook, it includes generating your Live key. https://www.facebook.com/facebookmedia/get-started/live
+A live/stream key for Facebook unfortunately changes every time you create a new Live video. You'll have to update this key each time you stream. You can follow this guide to get your started with streaming to Facebook, it includes generating your Live key. https://www.facebook.com/facebookmedia/get-started/live
 
 
 ## Install
 
 ### Heroku
 
-_WIP_
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller)
+
+Heroku allows you to create a free instance of streamroller that runs in the Cloud.
+
+1. Create an account on [Heroku.com](http://heroku.com)
+2. Hit the deploy to Heroku button and fill in the fields, make sure to remember your app name.
+3. Done, you can find your app at `http://YOURAPPNAME.herokuapp.com`, and will able to stream endpoint in OBS/XSplit to `rtmp://YOURAPPNAME.herokuapp.com`.
+
+To update your keys, head over to https://dashboard.heroku.com/apps/YOURAPPNAME/settings, and click "Reveal Config Vars". Streamroller will automaticially reboot and apply the new keys.
 
 ### Docker Cloud
 
-_WIP_
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/dustinblackman/streamroller)
+
+Docker Cloud is users who are atleast somewhat familiar with servers. You can follow Docker Cloud's get started guide [here](https://docs.docker.com/docker-cloud/getting-started/intro_cloud/), and then afterwards hit the Deploy with Cloud button.
+
+### Docker
+
+A docker image is available over at [Docker Hub](https://hub.docker.com/r/dustinblackman/streamroller). It's suggested to use a [tag](https://hub.docker.com/r/dustinblackman/streamroller/tags/) rather then `latest.`
 
 ### Server
 
