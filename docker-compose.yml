@@ -1,4 +1,4 @@
-redis:
+streamroller:
   image: dustinblackman/streamroller:latest
   restart: always
   ports:
