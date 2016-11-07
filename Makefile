@@ -8,6 +8,7 @@ LINTER_TAG := v1.0.3
 # Bundles static folder in to bindata
 bindata: setup-bindata
 	go-bindata -nomemcopy -pkg web -o web/bindata.go static/...
+	sed -i '' '1s/^/\/\/ NOTE: This file is only comitted to versioning due to Heroku not having any post install methods./' web/bindata.go
 
 # Creates binary
 build: bindata

@@ -5,9 +5,9 @@ _Self hosted simulcasting made easy_
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller) [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/dustinblackman/streamroller)
 
-Streamroller is a mutlistream tool that allows you to broadcast your streams (e.g OBS/Xsplit) to multiple platforms such as Twitch and Facebook. It also has read only chat to make it easy to vocally respond to your viewers in a single window.
+Streamroller is a mutlistream tool that allows you to broadcast your streams (e.g OBS/Xsplit) to multiple platforms such as Twitch, Youtube, and Facebook at once. It also has read only chat to make it easy to vocally respond to your viewers in a single window.
 
-This tool is meant to be hosted remotely to avoid networking issues locally as trying to stream for multiple sources can get quite heavy. Instructions on how to set up a free server are below!
+This tool is meant to be hosted remotely to avoid networking issues locally as trying to stream for multiple sources can get quite heavy. Instructions on how to set up a free server are below (Heroku is the easiest)!
 
 ## Screenshots
 
@@ -23,7 +23,7 @@ __Chat:__
 #### Platforms
 - [x] Twitch
 - [x] Facebook Live
-- [ ] Youtube
+- [x] Youtube
 - [ ] Azubu
 
 ## Getting Keys/Tokens
@@ -38,6 +38,21 @@ There's a simple app that safely generates oauth tokens for you found here. http
 __Live/Stream Key:__
 You can grab your key directly from your twitch dashboard. https://www.twitch.tv/USERNAME/dashboard/streamkey
 
+### Youtube
+
+Youtube uses a refresh token in order to access chat. As long as streamroller is running (even if you're not streaming), it'll keep the token alive. If it dies, simply repeat the process to generate a new one.
+
+__OAuth Token:__
+
+1. Open https://developers.google.com/oauthplayground/
+2. Scroll down to "Youtube Data API" and select the first item in the list. TODO: Write item
+3. Authenticate with the Google account you plan on streaming with.
+4. Click "Generate Token", then copy the "Refresh Token".
+
+__Live/Stream Key:__
+
+Your key can be found at the bottom of your Youtube Live dashboard here.
+
 ### Facebook
 
 Facebook requires you to stream from a Facebook page rather then a personal profile. If you don't already have one, make one first. https://www.facebook.com/pages/create/
@@ -49,8 +64,8 @@ __OAuth Token:__
 1. Open https://developers.facebook.com/tools/explorer/
 2. From the Application menu on the top right (the first item is Graph API Explorer), select the app you created previously.
 3. Click "Get Token", and then "Get User Access Token".
-4. Select "manage_pages" from the list and click "Get Access Token"
-5. Click the "i" icon at the beginning of your token and then "Open in Access Token Tool"
+4. Select "manage_pages" from the list and click "Get Access Token".
+5. Click the "i" icon at the beginning of your token and then "Open in Access Token Tool".
 6. Click "Extend Access Token" at the bottom, and copy your newly generated token. Keep note of when it expires.
 
 __Live/Stream Key:__
@@ -64,23 +79,23 @@ A live/stream key for Facebook unfortunately changes every time you create a new
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller)
 
-Heroku allows you to create a free instance of streamroller that runs in the Cloud.
+Heroku allows you to create a free instance of streamroller that runs in the cloud.
 
 1. Create an account on [Heroku.com](http://heroku.com)
-2. Hit the deploy to Heroku button and fill in the fields, make sure to remember your app name.
-3. Done, you can find your app at `http://YOURAPPNAME.herokuapp.com`, and will able to set you stream endpoint in OBS/XSplit to `rtmp://YOURAPPNAME.herokuapp.com`.
+2. Hit the [deploy to Heroku button](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller) above and fill in the fields with the keys and tokens you've already created, make sure to remember your app name.
+3. Done, you can find streamroller running at `http://YOURAPPNAME.herokuapp.com`, and will able to set you stream endpoint in OBS/XSplit to `rtmp://YOURAPPNAME.herokuapp.com`.
 
-To update your keys, head over to https://dashboard.heroku.com/apps/YOURAPPNAME/settings, and click "Reveal Config Vars". Streamroller will automaticially reboot and apply the new keys.
+To update your live keys or tokens, head over to https://dashboard.heroku.com/apps/YOURAPPNAME/settings, and click "Reveal Config Vars". Streamroller will automaticially reboot and apply the new keys.
 
 ### Docker Cloud
 
 [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/dustinblackman/streamroller)
 
-Docker Cloud is users who are atleast somewhat familiar with servers. You can follow Docker Cloud's get started guide [here](https://docs.docker.com/docker-cloud/getting-started/intro_cloud/), and then afterwards hit the Deploy with Cloud button.
+Docker Cloud is users who are atleast somewhat familiar with working on servers. You can follow Docker Cloud's get started guide [here](https://docs.docker.com/docker-cloud/getting-started/intro_cloud/), and then afterwards hit the Deploy with Cloud button.
 
 ### Docker
 
-A docker image is available over at [Docker Hub](https://hub.docker.com/r/dustinblackman/streamroller). It's suggested to use a [tag](https://hub.docker.com/r/dustinblackman/streamroller/tags/) rather then `latest.`
+A docker image is available over at [Docker Hub](https://hub.docker.com/r/dustinblackman/streamroller). It's suggested to use a [tag](https://hub.docker.com/r/dustinblackman/streamroller/tags/) rather then `latest`.
 
 ### Server
 
@@ -119,6 +134,9 @@ After launch, chat can be found on the index, (e.g `http://localhost:8080`). And
   "facebook-livekey": "", // Facebook live key
   "facebook-token": "", // Facebook auth token
 
+  "youtube-livekey": "", // Youtube live key
+  "youtube-token": "", // Youtube oauth refresh token
+
   "json": false, // Output logs in JSON
   "port": 8080, // Port for server to listen on
   "verbose": false, // Verbose logging
@@ -134,7 +152,7 @@ streamroller --twitch-livekey aBc123 facebook-livekey EfG456
 
 __Environments:__
 
-All flags/parameters can be used with environment variables by prefixing with `SR_`, and replaces dashes with underscores.
+All flags/parameters can be used with environment variables by prefixing with `SR_`, and replacing dashes with underscores.
 
 ```
 export SR_TWITCH_LIVEKEY=aBc123

@@ -110,6 +110,7 @@ func run(rootCmd *cobra.Command, args []string) {
 	logrus.SetLevel(logrus.InfoLevel)
 	if viper.GetBool("verbose") {
 		logrus.SetLevel(logrus.DebugLevel)
+		logrus.Info("Verbose logging enabled")
 	}
 	if viper.GetBool("json") {
 		logrus.SetFormatter(&logrus.JSONFormatter{})
@@ -144,10 +145,10 @@ func run(rootCmd *cobra.Command, args []string) {
 func main() {
 	rootCmd := &cobra.Command{
 		Use:     "streamroller",
-		Example: `  streamroller -t TWITCH-KEY -f FACEBOOK-KEY`,
+		Example: `  streamroller -t TWITCH-KEY -f FACEBOOK-KEY -y YOUTUBE-KEY`,
 		Run:     run,
-		Short:   "A multi streaming tool for with read only merged chats for platforms like Twitch and Facebook",
-		Long: `A multi streaming tool for with read only merged chats for platforms like Twitch and Facebook
+		Short:   "A multi streaming tool for with read only merged chats for platforms like Twitch, Youtube, and Facebook",
+		Long: `A multi streaming tool for with read only merged chats for platforms like Twitch, Youtube, and Facebook
 
 Version: ` + version + `
 Home: https://github.com/dustinblackman/streamroller`,
@@ -171,6 +172,10 @@ Home: https://github.com/dustinblackman/streamroller`,
 	flags.String("twitch-username", "", "Twitch channel user name")
 	flags.String("twitch-oauth", "", "Twitch oauth key. It can be generated here: https://twitchapps.com/tmi/")
 
+	// Youtube
+	flags.StringP("youtube-livekey", "y", "", "Youtube live key")
+	flags.String("youtube-token", "", "Youtube refresh token")
+
 	viper.SetConfigName("streamroller")
 	viper.SetEnvPrefix("sr")
 	viper.SetEnvKeyReplacer(strings.NewReplacer("-", "_"))
@@ -187,7 +192,9 @@ Home: https://github.com/dustinblackman/streamroller`,
 		"facebook-token",
 		"twitch-livekey",
 		"twitch-username",
-		"twitch-oauth"} {
+		"twitch-oauth",
+		"youtube-livekey",
+		"youtube-token"} {
 		viper.BindPFlag(param, flags.Lookup(param))
 	}
 
