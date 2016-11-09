@@ -12,7 +12,7 @@ This tool is meant to be hosted remotely to avoid networking issues locally as t
 ## Screenshots
 
 __Chat:__
-![Chat](http://i.imgur.com/kpnMCyM.png)
+![Chat](https://s18.postimg.org/7qh7eml7t/newscreen.png)
 
 ## Features/Roadmap
 - [x] Combined chat (read)
