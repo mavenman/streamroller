@@ -1,6 +1,9 @@
 {
 	"comment": "",
 	"ignore": "test",
+	"heroku": {
+		"preinstall": "make bindata"
+	},
 	"package": [
 		{
 			"checksumSHA1": "LIEX/dDzkTCsgDmAYMqxvq4zt5M=",
