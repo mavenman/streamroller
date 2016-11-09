@@ -45,7 +45,7 @@ Youtube uses a refresh token in order to access chat. As long as streamroller is
 __OAuth Token:__
 
 1. Open https://developers.google.com/oauthplayground/
-2. Scroll down to "Youtube Data API" and select the first item in the list. TODO: Write item
+2. Scroll down to "Youtube Data API" and select the first item in the list _https://www.googleapis.com/auth/youtube_.
 3. Authenticate with the Google account you plan on streaming with.
 4. Click "Generate Token", then copy the "Refresh Token".
 
