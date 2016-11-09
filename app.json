@@ -3,6 +3,15 @@
   "description": "Self hosted simulcasting made easy",
   "repository": "https://github.com/dustinblackman/streamroller",
   "keywords": ["go", "youtube", "facebook", "twitch"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/dustinblackman/heroku-buildpack-go"
+    }
+  ],
+  "addons": [
+    "logentries",
+    "librato"
+  ],
   "env": {
     "JSON": {
       "description": "Enables logs in JSON format",
@@ -43,9 +52,5 @@
       "value": "",
       "required": false
     }
-  },
-  "addons": [
-    "logentries",
-    "librato"
-  ]
+  }
 }
