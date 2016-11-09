@@ -25,6 +25,7 @@ __Chat:__
 - [x] Facebook Live
 - [x] Youtube
 - [ ] Azubu
+- [ ] Hitbox
 
 ## Getting Keys/Tokens
 
