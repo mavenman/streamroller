@@ -169,3 +169,18 @@ body {
 .messages .message.left.facebook .text {
   color: #293e6a;
 }
+
+/*Youtube*/
+.messages .message.left.youtube .avatar {
+  background-color: #ca1d20
+}
+.messages .message.left.youtube .text_wrapper {
+  background-color: #d96062;
+}
+.messages .message.left.youtube .text_wrapper::after, .messages .message.left.youtube .text_wrapper::before {
+  right: 100%;
+  border-right-color: #d96062;
+}
+.messages .message.left.youtube .text {
+  color: #8d1416;
+}

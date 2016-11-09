@@ -32,6 +32,16 @@
       "description": "Facebook token",
       "value": "",
       "required": false
+    },
+    "SR_YOUTUBE_LIVEKEY": {
+      "description": "Youtube live key",
+      "value": "",
+      "required": false
+    },
+    "SR_YOUTUBE_TOKEN": {
+      "description": "Youtube refresh token",
+      "value": "",
+      "required": false
     }
   },
   "addons": [
