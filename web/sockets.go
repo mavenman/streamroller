@@ -27,7 +27,6 @@ var (
 type Socket struct {
 	ID       string
 	SendChan chan []byte
-	Ws       *fastwebsocket.Conn
 }
 
 // SocketMessage is used to submit a message entry back to websocket listeners.
@@ -63,7 +62,7 @@ func (s *EchoServer) StartSocketConnection(ctx echo.Context) error {
 	err := socketUpgrader.Upgrade(req.RequestCtx, func(ws *fastwebsocket.Conn) {
 		id := uuid.NewV4().String()
 		sendChan := make(chan []byte, 100)
-		s.Sockets[id] = &Socket{id, sendChan, ws}
+		s.Sockets[id] = &Socket{id, sendChan}
 		go func() {
 			for data := range sendChan {
 				err := ws.WriteMessage(1, data)

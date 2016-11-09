@@ -10,3 +10,5 @@ streamroller:
     SR_TWITCH_LIVEKEY: ''
     SR_TWITCH_USERNAME: ''
     SR_TWITCH_OAUTH: ''
+    SR_YOUTUBE_LIVEKEY: ''
+    SR_YOUTUBE_TOKEN: ''

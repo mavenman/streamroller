@@ -103,6 +103,10 @@ func handlePublish(conn *rtmp.Conn) {
 		log.Debug("Dialing Facebook")
 		rtmps = addRTMPConnection(rtmps, "rtmp://rtmp-api.facebook.com:80/rtmp/"+viper.GetString("facebook-livekey"))
 	}
+	if viper.GetString("youtube-livekey") != "" {
+		log.Debug("Dialing Youtube")
+		rtmps = addRTMPConnection(rtmps, "rtmp://a.rtmp.youtube.com/live2/"+viper.GetString("youtube-livekey"))
+	}
 
 	err := writeHeaders(conn, rtmps)
 	if err != nil {
