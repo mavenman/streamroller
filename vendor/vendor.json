@@ -1,9 +1,9 @@
 {
 	"comment": "",
-	"ignore": "test",
 	"heroku": {
 		"preinstall": "make bindata"
 	},
+	"ignore": "test",
 	"package": [
 		{
 			"checksumSHA1": "LIEX/dDzkTCsgDmAYMqxvq4zt5M=",
@@ -140,38 +140,38 @@
 		{
 			"checksumSHA1": "pJBSQjwuY6WO7o6MCmC+kwLO2IM=",
 			"path": "github.com/labstack/echo",
-			"revision": "b0111506968ec0bd6f196d2b346db92d0478ee09",
-			"revisionTime": "2016-11-01T05:03:34Z"
+			"revision": "e08070379af60f5b9c0fb5bb2d1527ba9624fe43",
+			"revisionTime": "2016-11-09T06:41:35Z"
 		},
 		{
 			"checksumSHA1": "arbpSvi1eBUSuSaEZap+osiG+P8=",
 			"path": "github.com/labstack/echo/context",
-			"revision": "b0111506968ec0bd6f196d2b346db92d0478ee09",
-			"revisionTime": "2016-11-01T05:03:34Z"
+			"revision": "e08070379af60f5b9c0fb5bb2d1527ba9624fe43",
+			"revisionTime": "2016-11-09T06:41:35Z"
 		},
 		{
 			"checksumSHA1": "ag5fKA9XYSXX34ysbQrO9OUF6qM=",
 			"path": "github.com/labstack/echo/engine",
-			"revision": "b0111506968ec0bd6f196d2b346db92d0478ee09",
-			"revisionTime": "2016-11-01T05:03:34Z"
+			"revision": "e08070379af60f5b9c0fb5bb2d1527ba9624fe43",
+			"revisionTime": "2016-11-09T06:41:35Z"
 		},
 		{
 			"checksumSHA1": "BWX341TJuWKNN6PrfwDQS8hNgw4=",
 			"path": "github.com/labstack/echo/engine/fasthttp",
-			"revision": "b0111506968ec0bd6f196d2b346db92d0478ee09",
-			"revisionTime": "2016-11-01T05:03:34Z"
+			"revision": "e08070379af60f5b9c0fb5bb2d1527ba9624fe43",
+			"revisionTime": "2016-11-09T06:41:35Z"
 		},
 		{
 			"checksumSHA1": "iDCjk9XfJyeiobpsw3E1UXXde/0=",
 			"path": "github.com/labstack/echo/log",
-			"revision": "b0111506968ec0bd6f196d2b346db92d0478ee09",
-			"revisionTime": "2016-11-01T05:03:34Z"
+			"revision": "e08070379af60f5b9c0fb5bb2d1527ba9624fe43",
+			"revisionTime": "2016-11-09T06:41:35Z"
 		},
 		{
 			"checksumSHA1": "pqBR0Kt1C+LJQIPMr/gATRcqPno=",
 			"path": "github.com/labstack/echo/middleware",
-			"revision": "b0111506968ec0bd6f196d2b346db92d0478ee09",
-			"revisionTime": "2016-11-01T05:03:34Z"
+			"revision": "e08070379af60f5b9c0fb5bb2d1527ba9624fe43",
+			"revisionTime": "2016-11-09T06:41:35Z"
 		},
 		{
 			"checksumSHA1": "NvfQq6Y6kh9cMw+y1m00ivEd5b4=",
