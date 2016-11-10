@@ -13,7 +13,7 @@
     "librato"
   ],
   "env": {
-    "JSON": {
+    "SR_JSON": {
       "description": "Enables logs in JSON format",
       "value": "true"
     },
