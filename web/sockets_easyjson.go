@@ -4,7 +4,6 @@ package web
 
 import (
 	json "encoding/json"
-
 	jlexer "github.com/mailru/easyjson/jlexer"
 	jwriter "github.com/mailru/easyjson/jwriter"
 )
@@ -16,7 +15,7 @@ var (
 	_ = jwriter.Writer{}
 )
 
-func easyjson8a4a3b28DecodeGithubComDustinblackmanStreamrollerWeb(in *jlexer.Lexer, out *SocketMessage) {
+func easyjson7e4422e8DecodeGithubComDustinblackmanStreamrollerWeb(in *jlexer.Lexer, out *SocketMessage) {
 	if in.IsNull() {
 		in.Skip()
 		return
@@ -44,7 +43,7 @@ func easyjson8a4a3b28DecodeGithubComDustinblackmanStreamrollerWeb(in *jlexer.Lex
 	}
 	in.Delim('}')
 }
-func easyjson8a4a3b28EncodeGithubComDustinblackmanStreamrollerWeb(out *jwriter.Writer, in SocketMessage) {
+func easyjson7e4422e8EncodeGithubComDustinblackmanStreamrollerWeb(out *jwriter.Writer, in SocketMessage) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -63,7 +62,7 @@ func easyjson8a4a3b28EncodeGithubComDustinblackmanStreamrollerWeb(out *jwriter.W
 	if !first {
 		out.RawByte(',')
 	}
-
+	first = false
 	out.RawString("\"user\":")
 	out.String(string(in.User))
 	out.RawByte('}')
@@ -72,23 +71,23 @@ func easyjson8a4a3b28EncodeGithubComDustinblackmanStreamrollerWeb(out *jwriter.W
 // MarshalJSON supports json.Marshaler interface
 func (v SocketMessage) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson8a4a3b28EncodeGithubComDustinblackmanStreamrollerWeb(&w, v)
+	easyjson7e4422e8EncodeGithubComDustinblackmanStreamrollerWeb(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v SocketMessage) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson8a4a3b28EncodeGithubComDustinblackmanStreamrollerWeb(w, v)
+	easyjson7e4422e8EncodeGithubComDustinblackmanStreamrollerWeb(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *SocketMessage) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson8a4a3b28DecodeGithubComDustinblackmanStreamrollerWeb(&r, v)
+	easyjson7e4422e8DecodeGithubComDustinblackmanStreamrollerWeb(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *SocketMessage) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson8a4a3b28DecodeGithubComDustinblackmanStreamrollerWeb(l, v)
+	easyjson7e4422e8DecodeGithubComDustinblackmanStreamrollerWeb(l, v)
 }

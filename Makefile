@@ -48,9 +48,9 @@ dist: bindata
 
 	rm -rf tmp
 
-# Creates easyjson file for web.go
+# Creates easyjson file for sockets.go
 easyjson:
-	easyjson web/web.go
+	easyjson web/sockets.go
 
 # Builds and installs binary. Mainly used from people wanting to install from source.
 install: deps bindata
