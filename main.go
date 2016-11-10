@@ -61,6 +61,7 @@ func createLocalConnection(port string) *net.TCPConn {
 
 // ProxyConnection verifies whether connection is RTMP or HTTP, and redirects traffic accordingly.
 func (s *Server) ProxyConnection(conn *net.TCPConn) {
+	log := logrus.WithFields(logrus.Fields{"module": "main", "func": "ProxyConnection"})
 	defer conn.Close()
 	data := make([]byte, 1)
 	n, err := conn.Read(data)
@@ -71,8 +72,10 @@ func (s *Server) ProxyConnection(conn *net.TCPConn) {
 
 	var proxyConn *net.TCPConn
 	if data[0] == 0x03 { // RTMP first byte.
+		log.Debug("Forwarding RTMP connection")
 		proxyConn = createLocalConnection(s.RTMPPort)
 	} else {
+		log.Debug("Forwarding HTTP connection")
 		proxyConn = createLocalConnection(s.HTTPPort)
 	}
 	proxyConn.Write(data[:n])

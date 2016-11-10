@@ -110,15 +110,15 @@ func handlePublish(conn *rtmp.Conn) {
 
 	err := writeHeaders(conn, rtmps)
 	if err != nil {
-		log.Error(err)
+		log.WithFields(logrus.Fields{"func": "writeHeaders"}).Error(err)
 	}
 	err = copyPackets(conn, rtmps)
 	if err != nil {
-		log.Error(err)
+		log.WithFields(logrus.Fields{"func": "copyPackets"}).Error(err)
 	}
 	err = closeConnections(rtmps)
 	if err != nil {
-		log.Error(err)
+		log.WithFields(logrus.Fields{"func": "closeConnections"}).Error(err)
 	}
 	conn.Close()
 }
