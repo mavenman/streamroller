@@ -5,6 +5,9 @@
   "keywords": ["go", "youtube", "facebook", "twitch"],
   "buildpacks": [
     {
+      "url": "https://github.com/dustinblackman/nginx-rtmpt-buildpack"
+    },
+    {
       "url": "https://github.com/dustinblackman/heroku-buildpack-go"
     }
   ],

@@ -56,7 +56,7 @@ func copyPackets(src av.PacketReader, rtmps []*rtmp.Conn) (err error) {
 			}
 		case err = <-errorChan:
 			return
-		case <-time.After(time.Second * 8):
+		case <-time.After(time.Second * 20):
 			err = errors.New("Packet timeout reached")
 			return
 		}
