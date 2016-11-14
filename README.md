@@ -3,11 +3,11 @@ _Self hosted simulcasting made easy_
 
 <a href="https://travis-ci.org/dustinblackman/streamroller"><img src="https://img.shields.io/travis/dustinblackman/streamroller.svg" alt="Build Status"></a> <a href="https://goreportcard.com/report/github.com/dustinblackman/streamroller"><img src="https://goreportcard.com/badge/github.com/dustinblackman/streamroller"></a> <img src="https://img.shields.io/github/release/dustinblackman/streamroller.svg">
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller) [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/dustinblackman/streamroller)
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/dustinblackman/streamroller)
 
 Streamroller is a mutlistream tool that allows you to broadcast your streams (e.g OBS/Xsplit) to multiple platforms such as Twitch, Youtube, and Facebook at once. It also has read only chat to make it easy to vocally respond to your viewers in a single window.
 
-This tool is meant to be hosted remotely to avoid networking issues locally as trying to stream for multiple sources can get quite heavy. Instructions on how to set up a free server are below (Heroku is the easiest)!
+This tool is meant to be hosted remotely to avoid networking issues locally as trying to stream for multiple sources can get quite heavy.
 
 ## Screenshots
 
@@ -75,18 +75,6 @@ A live/stream key for Facebook unfortunately changes every time you create a new
 
 
 ## Install
-
-### Heroku
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller)
-
-Heroku allows you to create a free instance of streamroller that runs in the cloud.
-
-1. Create an account on [Heroku.com](http://heroku.com)
-2. Hit the [deploy to Heroku button](https://heroku.com/deploy?template=https://github.com/dustinblackman/streamroller) above and fill in the fields with the keys and tokens you've already created, make sure to remember your app name.
-3. Done, you can find streamroller running at `http://YOURAPPNAME.herokuapp.com`, and will able to set you stream endpoint in OBS/XSplit to `rtmp://YOURAPPNAME.herokuapp.com`.
-
-To update your live keys or tokens, head over to https://dashboard.heroku.com/apps/YOURAPPNAME/settings, and click "Reveal Config Vars". Streamroller will automaticially reboot and apply the new keys.
 
 ### Docker Cloud
 
