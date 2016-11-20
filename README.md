@@ -19,6 +19,7 @@ __Chat:__
 - [ ] Combined chat (write)
 - [x] RTMP cloning
 - [ ] Streamroller stream key protection
+- [ ] RTMPT to RTMP
 
 #### Platforms
 - [x] Twitch
