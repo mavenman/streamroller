@@ -170,4 +170,8 @@ $HOME/.streamroller/streamroller.json
 - Ethan for the name
 - [JDoeDevel](http://bootsnipp.com/JDoeDevel) for the chat snippet
 
+## Related Projects
+
+- [StreamWithFriends](https://github.com/dustinblackman/streamwithfriends) - StreamWithFriends allows your friends webcams to appear on your stream all through a web broswer.
+
 ## [License](./LICENSE)
