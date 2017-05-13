@@ -84,7 +84,7 @@ func (s *Server) ProxyConnection(conn *net.TCPConn) {
 			data := make([]byte, 1024*1024)
 			n, err := conn.Read(data)
 			if err != nil {
-				// TODO Add debug
+				logger.Log.Debug(err)
 				break
 			}
 			proxyConn.Write(data[:n])
@@ -96,7 +96,7 @@ func (s *Server) ProxyConnection(conn *net.TCPConn) {
 		data := make([]byte, 1024*1024)
 		n, err := proxyConn.Read(data)
 		if err != nil {
-			// TODO Add debug
+			logger.Log.Debug(err)
 			break
 		}
 		conn.Write(data[:n])
