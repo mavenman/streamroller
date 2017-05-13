@@ -2,14 +2,12 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net"
 	"os"
 	"strconv"
 	"strings"
 
-	"github.com/Sirupsen/logrus"
-	"github.com/dustinblackman/streamroller/web"
+	"github.com/dustinblackman/streamroller/logger"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -35,7 +33,7 @@ func getPort() string {
 
 		listen, err := net.ListenTCP("tcp", addr)
 		if err != nil {
-			logrus.Error(err)
+			logger.Log.Error(err)
 			continue
 		}
 
@@ -61,7 +59,6 @@ func createLocalConnection(port string) *net.TCPConn {
 
 // ProxyConnection verifies whether connection is RTMP or HTTP, and redirects traffic accordingly.
 func (s *Server) ProxyConnection(conn *net.TCPConn) {
-	log := logrus.WithFields(logrus.Fields{"module": "main", "func": "ProxyConnection"})
 	defer conn.Close()
 	data := make([]byte, 1)
 	n, err := conn.Read(data)
@@ -72,10 +69,10 @@ func (s *Server) ProxyConnection(conn *net.TCPConn) {
 
 	var proxyConn *net.TCPConn
 	if data[0] == 0x03 { // RTMP first byte.
-		log.Debug("Forwarding RTMP connection")
+		logger.Log.Debug("Forwarding RTMP connection")
 		proxyConn = createLocalConnection(s.RTMPPort)
 	} else {
-		log.Debug("Forwarding HTTP connection")
+		logger.Log.Debug("Forwarding HTTP connection")
 		proxyConn = createLocalConnection(s.HTTPPort)
 	}
 	proxyConn.Write(data[:n])
@@ -110,18 +107,11 @@ func run(rootCmd *cobra.Command, args []string) {
 	viper.AutomaticEnv()
 	viper.ReadInConfig()
 
-	logrus.SetLevel(logrus.InfoLevel)
-	if viper.GetBool("verbose") {
-		logrus.SetLevel(logrus.DebugLevel)
-		logrus.Info("Verbose logging enabled")
-	}
-	if viper.GetBool("json") {
-		logrus.SetFormatter(&logrus.JSONFormatter{})
-	}
+	// Setup global logger
+	logger.New(viper.GetBool("debug"))
 
-	log := logrus.WithFields(logrus.Fields{"module": "main"})
 	server := Server{getPort(), getPort()}
-	web.CreateEcho(server.HTTPPort)
+	CreateEcho(server.HTTPPort)
 	CreateRTMP(server.RTMPPort)
 
 	addr, err := net.ResolveTCPAddr("tcp", ":"+viper.GetString("port"))
@@ -133,7 +123,7 @@ func run(rootCmd *cobra.Command, args []string) {
 		panic(err)
 	}
 
-	log.Info("Starting to listen for connections on port " + viper.GetString("port"))
+	logger.Log.Infof("Starting to listen for connections on port %s", viper.GetString("port"))
 	for {
 		conn, err := listener.AcceptTCP()
 		if err != nil {
@@ -163,8 +153,7 @@ Home: https://github.com/dustinblackman/streamroller`,
 		port = "8080"
 	}
 	flags.String("port", port, "Server port")
-	flags.Bool("json", false, "Output logs in JSON")
-	flags.Bool("verbose", false, "Enable verbose logging")
+	flags.Bool("debug", false, "Enable debug logging")
 
 	// Facebook
 	flags.StringP("facebook-livekey", "f", "", "Facebook live stream key")
@@ -189,8 +178,7 @@ Home: https://github.com/dustinblackman/streamroller`,
 
 	for _, param := range []string{
 		"port",
-		"json",
-		"verbose",
+		"debug",
 		"facebook-livekey",
 		"facebook-token",
 		"twitch-livekey",
@@ -202,6 +190,6 @@ Home: https://github.com/dustinblackman/streamroller`,
 	}
 
 	if err := rootCmd.Execute(); err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 }

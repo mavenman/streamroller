@@ -4,20 +4,11 @@ import (
 	"errors"
 	"time"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/dustinblackman/joy4/format/rtmp"
+	"github.com/dustinblackman/streamroller/logger"
+	"github.com/dustinblackman/streamroller/services"
 	"github.com/nareix/joy4/av"
-	"github.com/spf13/viper"
 )
-
-func addRTMPConnection(rtmps []*rtmp.Conn, url string) []*rtmp.Conn {
-	conn, err := rtmp.Dial(url)
-	if err != nil {
-		logrus.Panic(err)
-	}
-
-	return append(rtmps, conn)
-}
 
 func copyPackets(src av.PacketReader, rtmps []*rtmp.Conn) (err error) {
 	var pkgChans []chan av.Packet
@@ -90,35 +81,26 @@ func closeConnections(rtmps []*rtmp.Conn) (err error) {
 
 func handlePublish(conn *rtmp.Conn) {
 	// fmt.Println(conn.URL) // TODO: Add stream key verification
-	viper := viper.GetViper()
-	log := logrus.WithFields(logrus.Fields{"module": "rtmp"})
 
 	// Handles creating RTMP connections to services
 	var rtmps []*rtmp.Conn
-	if viper.GetString("twitch-livekey") != "" {
-		log.Debug("Dialing Twitch")
-		rtmps = addRTMPConnection(rtmps, "rtmp://live.twitch.tv/app/"+viper.GetString("twitch-livekey"))
-	}
-	if viper.GetString("facebook-livekey") != "" {
-		log.Debug("Dialing Facebook")
-		rtmps = addRTMPConnection(rtmps, "rtmp://rtmp-api.facebook.com:80/rtmp/"+viper.GetString("facebook-livekey"))
-	}
-	if viper.GetString("youtube-livekey") != "" {
-		log.Debug("Dialing Youtube")
-		rtmps = addRTMPConnection(rtmps, "rtmp://a.rtmp.youtube.com/live2/"+viper.GetString("youtube-livekey"))
+	for _, service := range services.Services {
+		if service.CanConnect() {
+			rtmps = append(rtmps, service.ConnectRTMP())
+		}
 	}
 
 	err := writeHeaders(conn, rtmps)
 	if err != nil {
-		log.WithFields(logrus.Fields{"func": "writeHeaders"}).Error(err)
+		logger.Log.Error(err)
 	}
 	err = copyPackets(conn, rtmps)
 	if err != nil {
-		log.WithFields(logrus.Fields{"func": "copyPackets"}).Error(err)
+		logger.Log.Error(err)
 	}
 	err = closeConnections(rtmps)
 	if err != nil {
-		log.WithFields(logrus.Fields{"func": "closeConnections"}).Error(err)
+		logger.Log.Error(err)
 	}
 	conn.Close()
 }
@@ -128,6 +110,6 @@ func CreateRTMP(port string) {
 	server := &rtmp.Server{Addr: ":" + port}
 	server.HandlePublish = handlePublish
 
-	logrus.WithFields(logrus.Fields{"module": "rtmp"}).Info("Starting RTMP")
+	logger.Log.Info("Starting RTMP server")
 	go server.ListenAndServe()
 }

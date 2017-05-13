@@ -1,19 +1,14 @@
 .DEFAULT_GOAL := build
-VERSION := 0.1.0
+VERSION := 1.0.0
 BINDATA_TAG := v3.0.5
 GOVENDOR_TAG := v1.0.8
 LINTER_TAG := v1.0.3
 
-
-# Bundles static folder in to bindata
-bindata: setup-bindata
-	go-bindata -nomemcopy -pkg web -o web/bindata.go static/...
-
 # Creates binary
-build: bindata
+build: gogenerate
 	go build -ldflags="-X main.version=$(VERSION)" -o streamroller *.go
 
-build-linux: bindata
+build-linux: gogenerate
 	gox -os="linux" -arch="amd64" -output="streamroller"
 
 # Gets govendor if not found and installs all dependencies
@@ -27,7 +22,7 @@ deps:
 	govendor sync
 
 # Creates binarys for all available systems in gox and then zips/tars for distribution.
-dist: bindata
+dist: gogenerate
 	which gox && echo "" || go get github.com/mitchellh/gox
 	rm -rf tmp dist
 	gox -os="linux windows freebsd" -osarch="darwin/amd64" -output='tmp/{{.OS}}-{{.Arch}}-$(VERSION)/{{.Dir}}' -ldflags="-X main.version=$(VERSION)"
@@ -48,12 +43,11 @@ dist: bindata
 
 	rm -rf tmp
 
-# Creates easyjson file for sockets.go
-easyjson:
-	easyjson web/sockets.go
+gogenerate: setup-bindata setup-easyjson
+	go generate
 
 # Builds and installs binary. Mainly used from people wanting to install from source.
-install: deps bindata
+install: deps gogenerate
 	go install -ldflags="-X main.version=$(VERSION)" *.go
 
 # Setups go-bindata
@@ -64,6 +58,12 @@ setup-bindata:
 		git checkout tags/$(BINDATA_TAG);\
 		cd go-bindata;\
 		go install;\
+	fi
+
+# Setups easyjson
+setup-easyjson:
+	@if [ "$$(which easyjson)" = "" ]; then \
+		go get -u -v github.com/mailru/easyjson; \
 	fi
 
 # Setups linter configuration for tests
