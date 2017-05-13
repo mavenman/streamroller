@@ -77,5 +77,5 @@ setup-linter:
 	fi
 
 # Runs tests
-test: setup-linter bindata
+test: setup-linter gogenerate
 	gometalinter --vendor --fast --errors --dupl-threshold=100 --cyclo-over=25 --min-occurrences=5 --disable=gas --disable=gotype ./...

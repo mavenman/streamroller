@@ -60,7 +60,11 @@ func (f *FacebookService) connectChat(videoID, accessToken string) {
 				break
 			}
 
-			newMessages = append(newMessages, sockets.SocketMessage{message, f.name, name})
+			newMessages = append(newMessages, sockets.SocketMessage{
+				Message: message,
+				Source:  f.name,
+				User:    name,
+			})
 		}
 
 		lastID = string(nextLastID)

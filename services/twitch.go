@@ -64,7 +64,11 @@ func (t *TwitchService) connectChat(username, oauthKey string) {
 				keyVal := strings.Split(entry, "=")
 				headers[keyVal[0]] = strings.Join(keyVal[1:], "=")
 			}
-			sockets.SocketChannel <- &sockets.SocketMessage{userMsg, t.name, headers["display-name"]}
+			sockets.SocketChannel <- &sockets.SocketMessage{
+				Message: userMsg,
+				Source:  t.name,
+				User:    headers["display-name"],
+			}
 		}
 	}
 }

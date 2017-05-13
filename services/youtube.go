@@ -108,7 +108,11 @@ func (y *YoutubeService) connectChat(refreshToken string) {
 			name := gjson.Get(entry.Raw, "authorDetails.displayName").String()
 			message := gjson.Get(entry.Raw, "snippet.textMessageDetails.messageText").String()
 
-			newMessages = append(newMessages, sockets.SocketMessage{message, y.name, name})
+			newMessages = append(newMessages, sockets.SocketMessage{
+				Message: message,
+				Source:  y.name,
+				User:    name,
+			})
 		}
 
 		for _, socketMessage := range newMessages {
