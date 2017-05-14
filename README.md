@@ -84,9 +84,8 @@ After launch, chat can be found on the index, (e.g `http://localhost:8080`). And
   "youtube-livekey": "", // Youtube live key
   "youtube-token": "", // Youtube oauth refresh token
 
-  "json": false, // Output logs in JSON
   "port": 8080, // Port for server to listen on
-  "verbose": false, // Verbose logging
+  "debug": false, // Debug logging
 }
 ```
 
