@@ -46,7 +46,7 @@ A docker image is available over at [Docker Hub](https://hub.docker.com/r/dustin
 
 ### Server
 
-Grab the latest release from the [releases](https://github.com/dustinblackman/streamroller/releases) page, or build from source and install directly from master. Streamroller is currently built and tested against Go 1.7.
+Grab the latest release from the [releases](https://github.com/dustinblackman/streamroller/releases) page, or build from source and install directly from master. Streamroller is currently built and tested against Go 1.8.
 
 __Quick install for Linux:__
 ```
