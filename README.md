@@ -28,6 +28,8 @@ __Chat:__
 - [ ] Azubu
 - [ ] Hitbox
 
+## [Changelog](CHANGELOG.md)
+
 ## Getting Keys/Tokens
 
 Before installing to make the setup simpler, it's best to get all the keys and tokens you'll need from your accounts first. Not every platform is required, only keys and tokens for the platforms you wish to stream to. See the [SERVICES.md](SERVICES.md) doc.
