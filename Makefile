@@ -2,7 +2,6 @@
 VERSION := 1.0.0
 BINDATA_TAG := v3.0.5
 GOVENDOR_TAG := v1.0.8
-LINTER_TAG := v1.0.3
 
 # Creates binary
 build: gogenerate
@@ -69,10 +68,8 @@ setup-easyjson:
 # Setups linter configuration for tests
 setup-linter:
 	@if [ "$$(which gometalinter)" = "" ]; then \
-		go get -u -v github.com/alecthomas/gometalinter; \
-		cd $$GOPATH/src/github.com/alecthomas/gometalinter;\
-		git checkout tags/$(LINTER_TAG);\
-		go install;\
+		go get -u -v gopkg.in/alecthomas/gometalinter.v1; \
+		mv $$GOPATH/bin/gometalinter.v1 $$GOPATH/bin/gometalinter;\
 		gometalinter --install;\
 	fi
 
