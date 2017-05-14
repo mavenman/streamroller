@@ -69,7 +69,7 @@ make install
 
 Configuration can be done either by command line parameters, environment variables, or a JSON file. Please see all available flags with `streamroller --help` or in the example below.
 
-To set a configuration, you can take the flag name and export it in your environment or save in one of the three locations for config files. If on Heroku or Docker, use the environments examples.
+To set a configuration, you can take the flag name and export it in your environment or save in one of the three locations for config files.
 
 After launch, chat can be found on the index, (e.g `http://localhost:8080`). And streams can also be submitted to index (e.g `rtmp://localhost:8080`).
 
