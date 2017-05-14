@@ -3,6 +3,6 @@ tmp/
 vendor/*/
 !vendor/vendor.json
 
-web/bindata.go
+bindata.go
 streamroller
 streamroller.json

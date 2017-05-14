@@ -4,7 +4,6 @@ streamroller:
   ports:
     - '80:8080'
   environment:
-    JSON: true
     SR_FACEBOOK_LIVEKEY: ''
     SR_FACEBOOK_TOKEN: ''
     SR_TWITCH_LIVEKEY: ''
