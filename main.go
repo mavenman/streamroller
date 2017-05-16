@@ -63,7 +63,7 @@ func (s *Server) ProxyConnection(conn *net.TCPConn) {
 	data := make([]byte, 1)
 	n, err := conn.Read(data)
 	if err != nil {
-		fmt.Println(err)
+		logger.Log.Error(err)
 		return
 	}
 
@@ -110,8 +110,8 @@ func run(rootCmd *cobra.Command, args []string) {
 	// Setup global logger
 	logger.New(viper.GetBool("debug"))
 
-	server := Server{getPort(), getPort()}
-	CreateEcho(server.HTTPPort)
+	server := Server{getPort(), "9090"}
+	CreateEcho(server.HTTPPort, server.RTMPPort)
 	CreateRTMP(server.RTMPPort)
 
 	addr, err := net.ResolveTCPAddr("tcp", ":"+viper.GetString("port"))
