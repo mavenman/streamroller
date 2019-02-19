@@ -1,6 +1,6 @@
-//go:generate go-bindata -nomemcopy -pkg main -o ./bindata.go static/...
+//go:generate go-bindata -nomemcopy -pkg streamrollerlib -o ./bindata.go ../static/...
 
-package main
+package streamrollerlib
 
 import (
 	"mime"
@@ -25,7 +25,7 @@ func CreateEcho(port string) {
 	app.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(ctx echo.Context) error {
 			uri := ctx.Request().URL.RequestURI()
-			data, err := Asset("static" + uri)
+			data, err := Asset("../static" + uri)
 			if err != nil {
 				return next(ctx)
 			}
@@ -34,7 +34,7 @@ func CreateEcho(port string) {
 	})
 
 	app.GET("/", func(ctx echo.Context) error {
-		data, err := Asset("static/index.html")
+		data, err := Asset("../static/index.html")
 		if err != nil {
 			return ctx.String(404, "Not found")
 		}

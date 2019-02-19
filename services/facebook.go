@@ -5,9 +5,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dustinblackman/joy4/format/rtmp"
-	"github.com/dustinblackman/streamroller/logger"
-	"github.com/dustinblackman/streamroller/sockets"
+	"github.com/laice/joy4/format/rtmp"
+	"github.com/laice/streamroller/logger"
+	"github.com/laice/streamroller/sockets"
 	"github.com/parnurzeal/gorequest"
 	"github.com/spf13/viper"
 	"github.com/tidwall/gjson"

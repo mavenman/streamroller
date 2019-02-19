@@ -1,4 +1,4 @@
-package main
+package streamrollerlib
 
 import (
 	"fmt"
@@ -23,7 +23,7 @@ type Server struct {
 }
 
 // getPort checks for a random available port on system and verifies we can listen on it before returning.
-func getPort() string {
+func GetPort() string {
 	var port int
 	for {
 		addr, err := net.ResolveTCPAddr("tcp", "localhost:0")
@@ -45,7 +45,7 @@ func getPort() string {
 	return strconv.Itoa(port)
 }
 
-func createLocalConnection(port string) *net.TCPConn {
+func CreateLocalConnection(port string) *net.TCPConn {
 	addr, err := net.ResolveTCPAddr("tcp", "127.0.0.1:"+port)
 	if err != nil {
 		panic(err)
@@ -70,10 +70,10 @@ func (s *Server) ProxyConnection(conn *net.TCPConn) {
 	var proxyConn *net.TCPConn
 	if data[0] == 0x03 { // RTMP first byte.
 		logger.Log.Debug("Forwarding RTMP connection")
-		proxyConn = createLocalConnection(s.RTMPPort)
+		proxyConn = CreateLocalConnection(s.RTMPPort)
 	} else {
 		logger.Log.Debug("Forwarding HTTP connection")
-		proxyConn = createLocalConnection(s.HTTPPort)
+		proxyConn = CreateLocalConnection(s.HTTPPort)
 	}
 	proxyConn.Write(data[:n])
 	defer proxyConn.Close()
@@ -103,14 +103,14 @@ func (s *Server) ProxyConnection(conn *net.TCPConn) {
 	}
 }
 
-func run(rootCmd *cobra.Command, args []string) {
+func Run(rootCmd *cobra.Command, args []string) {
 	viper.AutomaticEnv()
 	viper.ReadInConfig()
 
 	// Setup global logger
 	logger.New(viper.GetBool("debug"))
 
-	server := Server{getPort(), getPort()}
+	server := Server{GetPort(), GetPort()}
 	CreateEcho(server.HTTPPort)
 	CreateRTMP(server.RTMPPort)
 
@@ -135,11 +135,11 @@ func run(rootCmd *cobra.Command, args []string) {
 	}
 }
 
-func main() {
+func Init() {
 	rootCmd := &cobra.Command{
 		Use:     "streamroller",
 		Example: `  streamroller -t TWITCH-KEY -f FACEBOOK-KEY -y YOUTUBE-KEY`,
-		Run:     run,
+		Run:     Run,
 		Short:   "A multi streaming tool for with read only merged chats for platforms like Twitch, Youtube, and Facebook",
 		Long: `A multi streaming tool for with read only merged chats for platforms like Twitch, Youtube, and Facebook
 

@@ -3,13 +3,14 @@
 package sockets
 
 import (
+	"fmt"
 	"time"
 
 	"golang.org/x/net/websocket"
 
-	"github.com/dustinblackman/streamroller/logger"
 	"github.com/labstack/echo"
-	uuid "github.com/satori/go.uuid"
+	"github.com/laice/streamroller/logger"
+	"github.com/satori/go.uuid"
 )
 
 var (
@@ -40,7 +41,7 @@ func WriteToWebSocket(ws *websocket.Conn, message []byte) {
 	}
 }
 
-func listenSocketChannel() {
+func ListenSocketChannel() {
 	for msg := range SocketChannel {
 		data, err := msg.MarshalJSON()
 		if err != nil {
@@ -56,7 +57,7 @@ func listenSocketChannel() {
 
 // HandleWebSocketConnections sets up handling websocket connections for echo
 func HandleWebSocketConnections() echo.HandlerFunc {
-	go listenSocketChannel()
+	go ListenSocketChannel()
 
 	return func(ctx echo.Context) error {
 		websocket.Handler(func(ws *websocket.Conn) {
@@ -66,6 +67,7 @@ func HandleWebSocketConnections() echo.HandlerFunc {
 				if err != nil {
 					logger.Log.Error(err)
 				}
+				fmt.Println(uuid.String())
 				id := uuid.String()
 				sendChan := make(chan []byte, 100)
 				openSockets[id] = &Socket{id, sendChan}

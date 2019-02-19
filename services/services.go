@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/dustinblackman/joy4/format/rtmp"
-	"github.com/dustinblackman/streamroller/logger"
+	"github.com/laice/joy4/format/rtmp"
+	"github.com/laice/streamroller/logger"
 )
 
 // Service is the interface for Services

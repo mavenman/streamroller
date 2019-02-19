@@ -1,4 +1,4 @@
-package main
+package streamrollerlib
 
 import (
 	"errors"
@@ -10,7 +10,7 @@ import (
 	"github.com/nareix/joy4/av"
 )
 
-func copyPackets(src av.PacketReader, rtmps []*rtmp.Conn) (err error) {
+func CopyPackets(src av.PacketReader, rtmps []*rtmp.Conn) (err error) {
 	var pkgChans []chan av.Packet
 	for _, conn := range rtmps {
 		pktChan := make(chan av.Packet)
@@ -54,7 +54,7 @@ func copyPackets(src av.PacketReader, rtmps []*rtmp.Conn) (err error) {
 	}
 }
 
-func writeHeaders(src av.Demuxer, rtmps []*rtmp.Conn) (err error) {
+func WriteHeaders(src av.Demuxer, rtmps []*rtmp.Conn) (err error) {
 	var streams []av.CodecData
 	if streams, err = src.Streams(); err != nil {
 		return
@@ -69,7 +69,7 @@ func writeHeaders(src av.Demuxer, rtmps []*rtmp.Conn) (err error) {
 	return
 }
 
-func closeConnections(rtmps []*rtmp.Conn) (err error) {
+func CloseConnections(rtmps []*rtmp.Conn) (err error) {
 	for _, conn := range rtmps {
 		if err = conn.WriteTrailer(); err != nil {
 			return
@@ -79,7 +79,7 @@ func closeConnections(rtmps []*rtmp.Conn) (err error) {
 	return
 }
 
-func handlePublish(conn *rtmp.Conn) {
+func HandlePublish(conn *rtmp.Conn) {
 	// fmt.Println(conn.URL) // TODO: Add stream key verification
 
 	// Handles creating RTMP connections to services
@@ -90,15 +90,15 @@ func handlePublish(conn *rtmp.Conn) {
 		}
 	}
 
-	err := writeHeaders(conn, rtmps)
+	err := WriteHeaders(conn, rtmps)
 	if err != nil {
 		logger.Log.Error(err)
 	}
-	err = copyPackets(conn, rtmps)
+	err = CopyPackets(conn, rtmps)
 	if err != nil {
 		logger.Log.Error(err)
 	}
-	err = closeConnections(rtmps)
+	err = CloseConnections(rtmps)
 	if err != nil {
 		logger.Log.Error(err)
 	}
@@ -108,7 +108,7 @@ func handlePublish(conn *rtmp.Conn) {
 // CreateRTMP creates a new RTMP server
 func CreateRTMP(port string) {
 	server := &rtmp.Server{Addr: ":" + port}
-	server.HandlePublish = handlePublish
+	server.HandlePublish = HandlePublish
 
 	logger.Log.Info("Starting RTMP server")
 	go server.ListenAndServe()
