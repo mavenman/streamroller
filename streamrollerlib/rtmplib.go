@@ -113,3 +113,11 @@ func CreateRTMP(port string) {
 	logger.Log.Info("Starting RTMP server")
 	go server.ListenAndServe()
 }
+
+func CreateCustomRTMP(port string, handle func(conn *rtmp.Conn)) {
+	server := &rtmp.Server{Addr: ":" + port}
+	server.HandlePublish = handle
+
+	logger.Log.Info("Starting RTMP server")
+	go server.ListenAndServe()
+}

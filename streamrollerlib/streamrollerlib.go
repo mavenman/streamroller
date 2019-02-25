@@ -174,6 +174,7 @@ Home: https://github.com/laice/streamroller`,
 	viper.SetConfigType("json")
 	viper.AddConfigPath(".")
 	viper.AddConfigPath("/etc")
+	viper.AddConfigPath("config/")
 	viper.AddConfigPath("$HOME/.streamroller")
 
 	for _, param := range []string{
