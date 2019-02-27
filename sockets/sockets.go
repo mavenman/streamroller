@@ -62,7 +62,11 @@ func HandleWebSocketConnections() echo.HandlerFunc {
 		websocket.Handler(func(ws *websocket.Conn) {
 			defer ws.Close()
 			for {
-				id := uuid.NewV4().String()
+				uuid, err := uuid.NewV4()
+				if err != nil {
+					logger.Log.Error(err)
+				}
+				id := uuid.String()
 				sendChan := make(chan []byte, 100)
 				openSockets[id] = &Socket{id, sendChan}
 				go func() {
@@ -74,7 +78,7 @@ func HandleWebSocketConnections() echo.HandlerFunc {
 
 				// Read
 				msg := ""
-				err := websocket.Message.Receive(ws, &msg)
+				err = websocket.Message.Receive(ws, &msg)
 				if err != nil {
 					break
 				}
