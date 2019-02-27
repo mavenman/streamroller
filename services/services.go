@@ -15,8 +15,7 @@ type Service interface {
 
 // Services is an accessible export to list all supported services
 var Services []Service
-
-//var ServiceNames map[string]Service
+var ServiceNames map[string]Service
 
 func connectRTMP(url string) *rtmp.Conn {
 	conn, err := rtmp.Dial(url)
@@ -31,10 +30,5 @@ func connectRTMP(url string) *rtmp.Conn {
 func RegisterService(service Service) {
 	Services = append(Services, service)
 
-	//if ServiceNames == nil {
-	//	ServiceNames = make(map[string]Service)
-	//}
-	//
-	//
-	//ServiceNames[service.Name()] = service
+	ServiceNames[service.Name()] = service
 }
