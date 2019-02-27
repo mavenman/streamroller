@@ -1,5 +1,5 @@
 streamroller:
-  image: laice/streamroller:latest
+  image: dustinblackman/streamroller:latest
   restart: always
   ports:
     - '80:8080'

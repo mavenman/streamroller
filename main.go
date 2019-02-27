@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/laice/streamroller/logger"
+	"github.com/dustinblackman/streamroller/logger"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -144,7 +144,7 @@ func main() {
 		Long: `A multi streaming tool for with read only merged chats for platforms like Twitch, Youtube, and Facebook
 
 Version: ` + version + `
-Home: https://github.com/laice/streamroller`,
+Home: https://github.com/dustinblackman/streamroller`,
 	}
 
 	flags := rootCmd.PersistentFlags()

@@ -4,9 +4,9 @@ import (
 	"errors"
 	"time"
 
-	"github.com/laice/joy4/format/rtmp"
-	"github.com/laice/streamroller/logger"
-	"github.com/laice/streamroller/services"
+	"github.com/dustinblackman/joy4/format/rtmp"
+	"github.com/dustinblackman/streamroller/logger"
+	"github.com/dustinblackman/streamroller/services"
 	"github.com/nareix/joy4/av"
 )
 

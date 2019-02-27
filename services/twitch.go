@@ -6,9 +6,9 @@ import (
 
 	"golang.org/x/net/websocket"
 
-	"github.com/laice/joy4/format/rtmp"
-	"github.com/laice/streamroller/logger"
-	"github.com/laice/streamroller/sockets"
+	"github.com/dustinblackman/joy4/format/rtmp"
+	"github.com/dustinblackman/streamroller/logger"
+	"github.com/dustinblackman/streamroller/sockets"
 	"github.com/spf13/viper"
 )
 

@@ -6,11 +6,11 @@ import (
 	"mime"
 	"path"
 
+	"github.com/dustinblackman/streamroller/logger"
+	"github.com/dustinblackman/streamroller/services"
+	"github.com/dustinblackman/streamroller/sockets"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/laice/streamroller/logger"
-	"github.com/laice/streamroller/services"
-	"github.com/laice/streamroller/sockets"
 )
 
 // CreateEcho creates the HTTP server.
