@@ -255,10 +255,10 @@
 			"revisionTime": "2017-05-05T04:36:39Z"
 		},
 		{
-			"checksumSHA1": "zmC8/3V4ls53DJlNTKDZwPSC/dA=",
-			"path": "github.com/satori/go.uuid",
-			"revision": "5bf94b69c6b68ee1b541973bb8e1144db23a194b",
-			"revisionTime": "2017-03-21T23:07:31Z"
+			"checksumSHA1": "vxQY0BYiRtsydImHJdIXTbqF/w0=",
+			"path": "github.com/gofrs/uuid",
+			"revision": "2593f3d8aa45b432942fe24758a279312d0f8719",
+			"revisionTime": "2019-03-20T16:13:50Z"
 		},
 		{
 			"checksumSHA1": "lBehULzb2/kIK3wZ0gz2yNmHq9s=",
