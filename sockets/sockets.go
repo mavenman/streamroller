@@ -9,7 +9,7 @@ import (
 
 	"github.com/dustinblackman/streamroller/logger"
 	"github.com/labstack/echo"
-	uuid "github.com/satori/go.uuid"
+	uuid "github.com/gofrs/uuid"
 )
 
 var (
