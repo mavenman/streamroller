@@ -6,7 +6,7 @@ WORKDIR /go/src/github.com/dustinblackman/streamroller
 COPY ./ ./
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" | tee -a /etc/apk/repositories && \
-    apk add -U git build-base go=1.7.3-r0 && \
+    apk add -U git build-base go=1.12.5-r0 && \
     make deps && \
     make build && \
     mkdir -p /app && \
